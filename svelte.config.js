@@ -1,3 +1,4 @@
+import { resolve } from 'node:path';
 import adapter from '@sveltejs/adapter-auto';
 import preprocess from 'svelte-preprocess';
 
@@ -8,7 +9,15 @@ const config = {
 	preprocess: preprocess(),
 
 	kit: {
-		adapter: adapter()
+		adapter: adapter(),
+
+		vite: {
+			server: {
+				fs: {
+					allow: [resolve('../kit/packages/kit/src')]
+				}
+			}
+		}
 	}
 };
 

@@ -2,13 +2,25 @@
 	"name": "kit-repros",
 	"version": "0.0.1",
 	"scripts": {
-		"dev": "svelte-kit dev",
-		"build": "svelte-kit build",
-		"package": "svelte-kit package",
-		"preview": "svelte-kit preview",
-		"prepare": "svelte-kit sync",
-		"check": "svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
+		"dev": "node ../kit/packages/kit/src/cli.js dev",
+		"build": "node ../kit/packages/kit/src/cli.js build",
+		"package": "node ../kit/packages/kit/src/cli.js package",
+		"preview": "node ../kit/packages/kit/src/cli.js preview",
+		"prepare": "node ../kit/packages/kit/src/cli.js sync",
+
+		"dev:inspect": "node --inspect ../kit/packages/kit/src/cli.js dev",
+		"build:inspect": "node --inspect ../kit/packages/kit/src/cli.js build",
+		"package:inspect": "node --inspect ../kit/packages/kit/src/cli.js package",
+		"preview:inspect": "node --inspect ../kit/packages/kit/src/cli.js preview",
+		"prepare:inspect": "node --inspect ../kit/packages/kit/src/cli.js sync",
+		"dev:inspect-brk": "node --inspect-brk ../kit/packages/kit/src/cli.js dev",
+		"build:inspect-brk": "node --inspect-brk ../kit/packages/kit/src/cli.js build",
+		"package:inspect-brk": "node --inspect-brk ../kit/packages/kit/src/cli.js package",
+		"preview:inspect-brk": "node --inspect-brk ../kit/packages/kit/src/cli.js preview",
+		"prepare:inspect-brk": "node --inspect-brk ../kit/packages/kit/src/cli.js sync",
+
+		"check": "svelte-check --tsconfig ./jsconfig.json",
+		"check:watch": "svelte-check --tsconfig ./jsconfig.json --watch",
 		"lint": "prettier --check --plugin-search-dir=. . && eslint .",
 		"format": "prettier --write --plugin-search-dir=. ."
 	},
@@ -34,6 +46,19 @@
 		"svelte-preprocess": "^4.10.1",
 		"tslib": "^2.3.1",
 		"typescript": "~4.6.2"
+	},
+	"pnpm": {
+		"overrides": {
+			"@sveltejs/adapter-auto": "../kit/packages/adapter-auto",
+			"@sveltejs/adapter-cloudflare": "../kit/packages/adapter-cloudflare",
+			"@sveltejs/adapter-cloudflare-workers": "../kit/packages/",
+			"@sveltejs/adapter-netlify": "../kit/packages/adapter-netlify",
+			"@sveltejs/adapter-node": "../kit/packages/adapter-node",
+			"@sveltejs/adapter-static": "../kit/packages/adapter-static",
+			"@sveltejs/adapter-vercel": "../kit/packages/adapter-vercel",
+			"@sveltejs/amp": "../kit/packages/amp",
+			"@sveltejs/kit": "../kit/packages/kit"
+		}
 	},
 	"type": "module"
 }
